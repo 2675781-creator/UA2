@@ -1,0 +1,10 @@
+import database from '../config/connection.js';
+import { DataTypes} from "sequelize";
+
+const Categorie = database.define('Categorie', {
+    numero_categorie: {type: DataTypes.INTEGER, allowNull: false, unique: true},
+    nom_categorie: {type: DataTypes.STRING, allowNull: false},
+    description: DataTypes.STRING
+});
+
+export default Categorie
