@@ -27,11 +27,11 @@ export const addClient= async (req, res) =>{
 
 //suppression d'un Client
 export const deleteClient = async(req, res) => {
-    const {numero} = req.params
-    if (!numero) return res.status(404).json({error:true, message: "le numero du Client est requis"})
+    const {id} = req.params
+    if (!id) return res.status(404).json({error:true, message: "L'id du Client est requis"})
     try {
-        const result = await Client.destroy({where: {numero}})
-        res.status(200).json({message: `Le client ${numero} a été supprimé avec succes`})
+        const result = await Client.destroy({where: {id}})
+        res.status(200).json({message: `Le client ${id} a été supprimé avec succes`})
     }
     catch(error){
         res.status(404).json({message: error.message})
@@ -40,10 +40,10 @@ export const deleteClient = async(req, res) => {
 
 //voir le profil d'un Client par son numéro
 export const getClientProfile = async (req, res) => {
-    const {numero} = req.params
+    const {id} = req.params
 
     try{
-        const client = await Client.findByPk(numero)
+        const client = await Client.findByPk(id)
         res.status(200).json({message:"Profil d'un Client", data:client})
     }
     catch(error){
@@ -53,12 +53,12 @@ export const getClientProfile = async (req, res) => {
 
 //mise a jour d'un client
 export const updateClient = async (req, res) => {
-    let {numero} = req.params
+    let {id} = req.params
     const updatedClient = {nom:req.body.nom, prenom:req.body.prenom, article_prefere:req.body.article_prefere}
     
-    if (!numero) return res.status(404).json({error:true, message: "le numero du Client est requis"})
+    if (!id) return res.status(404).json({error:true, message: "L'id du Client est requis"})
     try {
-        const result = await Client.update(updatedClient, {where : {numero}})
+        const result = await Client.update(updatedClient, {where : {id}})
         res.status(200).json(result)
     }
     catch(error){

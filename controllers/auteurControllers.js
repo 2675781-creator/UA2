@@ -29,11 +29,11 @@ export const addAuteur= async (req, res) =>{
 
 //suppression d'un auteur
 export const deleteAuteur = async(req, res) => {
-    const {numero} = req.params
-    if (!numero) return res.status(404).json({error:true, message: "le numero de l'auteur est requis"})
+    const {id} = req.params
+    if (!id) return res.status(404).json({error:true, message: "L'id de l'auteur est requis"})
     try {
-        const result = await Auteur.destroy({where: {numero}})
-        res.status(200).json({message: `L'auteur ${numero} a été supprimé avec succes`})
+        const result = await Auteur.destroy({where: {id}})
+        res.status(200).json({message: `L'auteur ${id} a été supprimé avec succes`})
     }
     catch(error){
         res.status(404).json({message: error.message})
@@ -42,10 +42,10 @@ export const deleteAuteur = async(req, res) => {
 
 //voir le profil d'un auteur par son numéro
 export const getAuteurProfile = async (req, res) => {
-    const {numero} = req.params
+    const {id} = req.params
 
     try{
-        const auteur = await Auteur.findByPk(numero)
+        const auteur = await Auteur.findByPk(id)
         res.status(200).json({message:"Profil d'un auteur", data:auteur})
     }
     catch(error){
@@ -55,12 +55,12 @@ export const getAuteurProfile = async (req, res) => {
 
 //mise a jour d'un auteur
 export const updateAuteur = async (req, res) => {
-    let {numero} = req.params
+    let {id} = req.params
     const updatedAuteur = {nom:req.body.nom, prenom:req.body.prenom, age:req.body.age, nationalite:req.body.nationalite, langue:req.body.langue}
     
-    if (!numero) return res.status(404).json({error:true, message: "le numero de l'auteur est requis"})
+    if (!id) return res.status(404).json({error:true, message: "L'id de l'auteur est requis"})
     try {
-        const result = await Auteur.update(updatedAuteur, {where : {numero}})
+        const result = await Auteur.update(updatedAuteur, {where : {id}})
         res.status(200).json(result)
     }
     catch(error){

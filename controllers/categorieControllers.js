@@ -28,11 +28,11 @@ export const addCategorie= async (req, res) =>{
 
 //suppression d'un Categorie
 export const deleteCategorie = async(req, res) => {
-    const {numero} = req.params
-    if (!numero) return res.status(404).json({error:true, message: "le numero de la categorie est requis"})
+    const {id} = req.params
+    if (!id) return res.status(404).json({error:true, message: "L'id de la categorie est requis"})
     try {
-        const result = await Categorie.destroy({where: {numero}})
-        res.status(200).json({message: `La Categorie ${numero} a été supprimé avec succes`})
+        const result = await Categorie.destroy({where: {id}})
+        res.status(200).json({message: `La Categorie ${id} a été supprimé avec succes`})
     }
     catch(error){
         res.status(404).json({message: error.message})
@@ -41,10 +41,10 @@ export const deleteCategorie = async(req, res) => {
 
 //voir le profil d'un Categorie par son numéro
 export const getCategorieProfile = async (req, res) => {
-    const {numero} = req.params
+    const {id} = req.params
 
     try{
-        const categorie = await Categorie.findByPk(numero)
+        const categorie = await Categorie.findByPk(id)
         res.status(200).json({message:"Profil d'un Categorie", data:categorie})
     }
     catch(error){
@@ -54,12 +54,12 @@ export const getCategorieProfile = async (req, res) => {
 
 //mise a jour d'un Categorie
 export const updateCategorie = async (req, res) => {
-    let {numero} = req.params
+    let {id} = req.params
     const updatedCategorie = {nom_categorie:req.body.nom_categorie, description:req.body.description}
     
-    if (!numero) return res.status(404).json({error:true, message: "le numero de la categorie est requis"})
+    if (!id) return res.status(404).json({error:true, message: "L'id de la categorie est requis"})
     try {
-        const result = await Categorie.update(updatedCategorie, {where : {numero}})
+        const result = await Categorie.update(updatedCategorie, {where : {id}})
         res.status(200).json(result)
     }
     catch(error){

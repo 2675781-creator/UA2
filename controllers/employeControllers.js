@@ -29,11 +29,11 @@ export const addEmploye= async (req, res) =>{
 
 //suppression d'un Employe
 export const deleteEmploye = async(req, res) => {
-    const {numero} = req.params
-    if (!numero) return res.status(404).json({error:true, message: "le numero de l'employe est requis"})
+    const {id} = req.params
+    if (!id) return res.status(404).json({error:true, message: "L'id de l'employe est requis"})
     try {
-        const result = await Employe.destroy({where: {numero}})
-        res.status(200).json({message: `L'employe ${numero} a été supprimé avec succes`})
+        const result = await Employe.destroy({where: {id}})
+        res.status(200).json({message: `L'employe ${id} a été supprimé avec succes`})
     }
     catch(error){
         res.status(404).json({message: error.message})
@@ -42,10 +42,10 @@ export const deleteEmploye = async(req, res) => {
 
 //voir le profil d'un Employe par son numéro
 export const getEmployeProfile = async (req, res) => {
-    const {numero} = req.params
+    const {id} = req.params
 
     try{
-        const Employe = await Employe.findByPk(numero)
+        const Employe = await Employe.findByPk(id)
         res.status(200).json({message:"Profil d'un Employe", data:Employe})
     }
     catch(error){
@@ -55,12 +55,12 @@ export const getEmployeProfile = async (req, res) => {
 
 //mise a jour d'un Employe
 export const updateEmploye = async (req, res) => {
-    let {numero} = req.params
+    let {id} = req.params
     const updatedEmploye = {nom:req.body.nom, prenom:req.body.prenom, age:req.body.age, role:req.body.role, date_embauche:req.body.date_embauche, numero_tache:req.body.numero_tache}
     
-    if (!numero) return res.status(404).json({error:true, message: "le numero de l'employe est requis"})
+    if (!id) return res.status(404).json({error:true, message: "L'id de l'employe est requis"})
     try {
-        const result = await Employe.update(updatedEmploye, {where : {numero}})
+        const result = await Employe.update(updatedEmploye, {where : {id}})
         res.status(200).json(result)
     }
     catch(error){

@@ -29,11 +29,11 @@ export const addArticle= async (req, res) =>{
 
 //suppression d'un article
 export const deleteArticle = async(req, res) => {
-    const {numero} = req.params
-    if (!numero) return res.status(404).json({error:true, message: "le numero de l'article est requis"})
+    const {id} = req.params
+    if (!id) return res.status(404).json({error:true, message: "L'id de l'article est requis"})
     try {
-        const result = await Article.destroy({where: {numero}})
-        res.status(200).json({message: `L'article ${numero} a été supprimé avec succes`})
+        const result = await Article.destroy({where: {id}})
+        res.status(200).json({message: `L'article ${id} a été supprimé avec succes`})
     }
     catch(error){
         res.status(404).json({message: error.message})
@@ -42,10 +42,10 @@ export const deleteArticle = async(req, res) => {
 
 //voir le profil d'un article par son numéro
 export const getArticleProfile = async (req, res) => {
-    const {numero} = req.params
+    const {id} = req.params
 
     try{
-        const article = await Article.findByPk(numero)
+        const article = await Article.findByPk(id)
         res.status(200).json({message:"Profil d'un article", data:article})
     }
     catch(error){
@@ -55,12 +55,12 @@ export const getArticleProfile = async (req, res) => {
 
 //mise a jour d'un article
 export const updateArticle = async (req, res) => {
-    let {numero} = req.params
+    let {id} = req.params
     const updatedArticle = {titre:req.body.titre, date_publication:req.body.date_publication, status:req.body.status, quantite:req.body.quantite}
     
-    if (!numero) return res.status(404).json({error:true, message: "le numero de l'article est requis"})
+    if (!id) return res.status(404).json({error:true, message: "L'id de l'article est requis"})
     try {
-        const result = await Article.update(updatedArticle, {where : {numero}})
+        const result = await Article.update(updatedArticle, {where : {id}})
         res.status(200).json(result)
     }
     catch(error){

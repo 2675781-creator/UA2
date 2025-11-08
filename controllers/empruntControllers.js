@@ -1,4 +1,4 @@
-import Emprunt, {Emprunt} from "../modeles/Emprunt.js"
+import {Emprunt} from "../modeles/Emprunt.js"
 
 //Lecture de la listes des emprunts
 export async function getAllEmprunt(req, res) {

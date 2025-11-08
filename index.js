@@ -22,11 +22,11 @@ const ENV = dotenv.config().parsed;
 const PORT= ENV.PORT || 8000
 console.log("variables d'environement :", ENV);
 
-app.get("/api/article", getAllArticle)
-app.get("/api/article", getArticleProfile)
-app.post("/api/article", addArticle)
-app.delete("/api/article", deleteArticle)
-app.put("/api/article", updateArticle)
+app.get("/api/articles", getAllArticle);
+app.get("/api/articles/:id", getArticleProfile);
+app.post("/api/articles", addArticle);
+app.delete("/api/articles/:id", deleteArticle);
+app.put("/api/articles/:id", updateArticle);
 //app.use("/api/articles", articleRoute)
 
 // Creation des tables
