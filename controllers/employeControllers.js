@@ -1,4 +1,4 @@
-import {Employe} from "../modeles/Employe.js"
+import Employe from "../modeles/Employe.js"
 
 //Lecture de la listes des employes
 export async function getAllEmploye(req, res) {

@@ -1,4 +1,4 @@
-import {Categorie} from "../modeles/Categorie.js"
+import Categorie from "../modeles/Categorie.js"
 
 //Lecture de la listes des Categories
 export async function getAllCategorie(req, res) {

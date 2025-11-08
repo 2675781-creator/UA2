@@ -1,4 +1,4 @@
-import {Client} from "../modeles/Client.js"
+import Client from "../modeles/Client.js"
 
 //Lecture de la listes des Clients
 export async function getAllClient(req, res) {

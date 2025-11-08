@@ -7,22 +7,24 @@ import Emprunt from "./Emprunt.js";
 
 
 //un auteur a plusieurs articles
-Auteur.hasMany(Article, { foreignKey: 'numero_auteur'});
-Article.belongsTo(Auteur, { foreignKey: 'numero_auteur'})
+Auteur.hasMany(Article, { foreignKey: 'id_auteur'});
+Article.belongsTo(Auteur, { foreignKey: 'id_auteur'})
 
 //un article peut se situe dans plusieurs catégories
-Categorie.hasMany(Article, { foreignKey: 'numero_categorie'});
-Article.belongsTo(Categorie, {foreignKey: 'numero_categorie'});
+Categorie.hasMany(Article, { foreignKey: 'id_categorie'});
+Article.belongsTo(Categorie, {foreignKey: 'id_categorie'});
 
 //Un article peut etre gere par plusieurs employe
-Article.hasMany(Employe, { foreignKey: 'id_employe'});
-Employe.belongsTo(Article, { foreignKey: 'id_employe'})
+Article.hasMany(Employe, { foreignKey: 'id_article'});
+Employe.belongsTo(Article, { foreignKey: 'id_article'})
 
 //plusieurs articles peuvent etre emprunter par plusieurs clients
-Article.belongsToMany(Emprunt, {through: 'ArticleEmprunt'})
+Emprunt.belongsTo(Emprunt, {foreignKey: 'id_client'})
 //plusieurs clients peuvent emprunter plusieurs articles
-Client.belongsToMany(Emprunt, {through: 'Emprunt'})
+Client.hasMany(Emprunt, {foreignKey: 'id_client'})
 
+Article.hasMany(Emprunt, {foreignKey: 'id_article'});
+Emprunt.belongsTo(Article, {foreignKey: 'id_article'});
 
 export {Auteur, Article, Categorie, Client, Employe, Emprunt}
 

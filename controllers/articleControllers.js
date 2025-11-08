@@ -1,4 +1,4 @@
-import {Article} from "../modeles/Article.js"
+import Article from "../modeles/Article.js";
 
 //Lecture de la listes des articles
 export async function getAllArticle(req, res) {

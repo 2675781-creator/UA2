@@ -3,7 +3,6 @@ import { DataTypes} from "sequelize";
 
 
 const Emprunt = database.define('Emprunt', {
-    
     id_client: {type: DataTypes.INTEGER, allowNull: false},
     id_article: {type: DataTypes.INTEGER, allowNull: false},
     date_emprunt: DataTypes.DATEONLY,

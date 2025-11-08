@@ -1,4 +1,4 @@
-import {Auteur} from "../modeles/Auteur.js"
+import Auteur from "../modeles/Auteur.js"
 
 //Lecture de la listes des auteurs
 export async function getAllAuteur(req, res) {
