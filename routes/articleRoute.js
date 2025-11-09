@@ -5,7 +5,7 @@ import { addArticle, deleteArticle, getAllArticle, getArticleProfile, updateArti
 const articleRoute = Router();
 
 articleRoute
-.get("", getAllArticle)
+.get("/", getAllArticle)
 .get("/:id", getArticleProfile)
 .post("/", addArticle)
 .delete("/:id", deleteArticle)

@@ -32,7 +32,7 @@ export const deleteArticle = async(req, res) => {
     const {id} = req.params
     if (!id) return res.status(404).json({error:true, message: "L'id de l'article est requis"})
     try {
-        const result = await Article.destroy({where: {id}})
+        const result = await Article.destroy({where: {id_article: id}});
         res.status(200).json({message: `L'article ${id} a été supprimé avec succes`})
     }
     catch(error){
@@ -60,7 +60,7 @@ export const updateArticle = async (req, res) => {
     
     if (!id) return res.status(404).json({error:true, message: "L'id de l'article est requis"})
     try {
-        const result = await Article.update(updatedArticle, {where : {id}})
+        const result = await Article.update(updatedArticle, {where : {id_article: id}});
         res.status(200).json(result)
     }
     catch(error){

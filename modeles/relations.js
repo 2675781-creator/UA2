@@ -19,7 +19,7 @@ Article.hasMany(Employe, { foreignKey: 'id_article'});
 Employe.belongsTo(Article, { foreignKey: 'id_article'})
 
 //plusieurs articles peuvent etre emprunter par plusieurs clients
-Emprunt.belongsTo(Emprunt, {foreignKey: 'id_client'})
+Emprunt.belongsTo(Client, {foreignKey: 'id_client'})
 //plusieurs clients peuvent emprunter plusieurs articles
 Client.hasMany(Emprunt, {foreignKey: 'id_client'})
 

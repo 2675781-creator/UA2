@@ -11,3 +11,5 @@ empruntRoute
 .post("/", addEmprunt)
 .delete("/:id", deleteEmprunt)
 .put("/:id", updateEmprunt)
+
+export default empruntRoute;

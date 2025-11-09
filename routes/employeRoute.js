@@ -10,3 +10,5 @@ employeRoute
 .post("/", addEmploye)
 .delete("/:id", deleteEmploye)
 .put("/:id", updateEmploye)
+
+export default employeRoute;

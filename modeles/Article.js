@@ -10,6 +10,8 @@ const Article = database.define('Article', {
     numero_auteur : {type: DataTypes.INTEGER, allowNull:false},
     numero_categorie : {type:DataTypes.INTEGER, allowNull:false},
     id_employe : {type: DataTypes.INTEGER, allowNull:false}
+}, {
+    timestamps:false
 });
 
 export default Article

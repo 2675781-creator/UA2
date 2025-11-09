@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addAuteur, deleteAuteur, getAllAuteur, getAuteurProfile, updateAuteur } from "../controllers/auteurControllers";
+import { addAuteur, deleteAuteur, getAllAuteur, getAuteurProfile, updateAuteur } from "../controllers/auteurControllers.js";
 
 
 const auteurRoute = Router();

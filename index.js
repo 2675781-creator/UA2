@@ -3,9 +3,14 @@ import helmet from 'helmet';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import database from './config/connection.js'
-import { addArticle, deleteArticle, getAllArticle, getArticleProfile, updateArticle } from './controllers/articleControllers.js';
+//import { addArticle, deleteArticle, getAllArticle, getArticleProfile, updateArticle } from './controllers/articleControllers.js';
 
-//import articleRoute from './routes/articleRoute.js';
+import auteurRoute from './routes/auteurRoute.js';
+import categorieRoute from './routes/categorieRoute.js';
+import clientRoute from './routes/clientRoute.js';
+import employeRoute from './routes/employeRoute.js';
+import empruntRoute from './routes/empruntRoute.js';
+import articleRoute from './routes/articleRoute.js';
 
 const app = express()
 
@@ -22,12 +27,20 @@ const ENV = dotenv.config().parsed;
 const PORT= ENV.PORT || 8000
 console.log("variables d'environement :", ENV);
 
-app.get("/api/articles", getAllArticle);
-app.get("/api/articles/:id", getArticleProfile);
-app.post("/api/articles", addArticle);
-app.delete("/api/articles/:id", deleteArticle);
-app.put("/api/articles/:id", updateArticle);
-//app.use("/api/articles", articleRoute)
+app.get("/", (req, res) => {
+    res.send("Bienvenue sur l'API UA2 !");
+});
+//app.get("/api/articles", getAllArticle);
+//app.get("/api/articles/:id", getArticleProfile);
+//app.post("/api/articles", addArticle);
+//app.delete("/api/articles/:id", deleteArticle);
+//app.put("/api/articles/:id", updateArticle);
+app.use("/api/articles", articleRoute);
+app.use("/api/categories", categorieRoute);
+app.use("/api/clients", clientRoute);
+app.use("/api/employes", employeRoute)
+app.use("/api/auteurs", auteurRoute);
+
 
 // Creation des tables
 database.sync({ alter: true })  //alter: modifie une table
