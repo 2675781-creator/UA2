@@ -31,7 +31,7 @@ export const deleteCategorie = async(req, res) => {
     const {id} = req.params
     if (!id) return res.status(404).json({error:true, message: "L'id de la categorie est requis"})
     try {
-        const result = await Categorie.destroy({where: {id}})
+        const result = await Categorie.destroy({where: {id_categorie: id}})
         res.status(200).json({message: `La Categorie ${id} a été supprimé avec succes`})
     }
     catch(error){
@@ -59,7 +59,7 @@ export const updateCategorie = async (req, res) => {
     
     if (!id) return res.status(404).json({error:true, message: "L'id de la categorie est requis"})
     try {
-        const result = await Categorie.update(updatedCategorie, {where : {id}})
+        const result = await Categorie.update(updatedCategorie, {where : {id_categorie: id}})
         res.status(200).json(result)
     }
     catch(error){

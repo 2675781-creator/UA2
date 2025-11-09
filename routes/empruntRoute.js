@@ -6,10 +6,10 @@ import { addEmprunt, deleteEmprunt, getAllEmprunt, getEmpruntStatut, updateEmpru
 const empruntRoute = Router()
 
 empruntRoute
-.get("", getAllEmprunt)
-.get("/:id", getEmpruntStatut)
+.get("/", getAllEmprunt)
+.get("/:id_client/:id_article", getEmpruntStatut)
 .post("/", addEmprunt)
-.delete("/:id", deleteEmprunt)
-.put("/:id", updateEmprunt)
+.delete("/:id_client/:id_article", deleteEmprunt)
+.put("/:id_client/:id_article", updateEmprunt)
 
 export default empruntRoute;

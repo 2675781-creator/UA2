@@ -32,7 +32,7 @@ export const deleteAuteur = async(req, res) => {
     const {id} = req.params
     if (!id) return res.status(404).json({error:true, message: "L'id de l'auteur est requis"})
     try {
-        const result = await Auteur.destroy({where: {id}})
+        const result = await Auteur.destroy({where: {id_auteur: id}})
         res.status(200).json({message: `L'auteur ${id} a été supprimé avec succes`})
     }
     catch(error){
@@ -60,7 +60,7 @@ export const updateAuteur = async (req, res) => {
     
     if (!id) return res.status(404).json({error:true, message: "L'id de l'auteur est requis"})
     try {
-        const result = await Auteur.update(updatedAuteur, {where : {id}})
+        const result = await Auteur.update(updatedAuteur, {where : {id_auteur: id}})
         res.status(200).json(result)
     }
     catch(error){

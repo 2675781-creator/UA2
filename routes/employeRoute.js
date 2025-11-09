@@ -5,7 +5,7 @@ import { addEmploye, deleteEmploye, getAllEmploye, getEmployeProfile, updateEmpl
 const employeRoute = Router()
 
 employeRoute
-.get("", getAllEmploye)
+.get("/", getAllEmploye)
 .get("/:id", getEmployeProfile)
 .post("/", addEmploye)
 .delete("/:id", deleteEmploye)

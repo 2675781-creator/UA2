@@ -40,12 +40,13 @@ app.use("/api/categories", categorieRoute);
 app.use("/api/clients", clientRoute);
 app.use("/api/employes", employeRoute)
 app.use("/api/auteurs", auteurRoute);
+app.use("/api/emprunts", empruntRoute)
 
 
 // Creation des tables
-database.sync({ alter: true })  //alter: modifie une table
+//database.sync({ alter: true })  //alter: modifie une table
                                 //force : refaire toute la table
 
 app.listen(PORT, () => {
-    console.log(`Le serveur est demarre sur le port ${PORT}`)
+    console.log(`Le serveur est demarre sur le port ${PORT}`);
 })

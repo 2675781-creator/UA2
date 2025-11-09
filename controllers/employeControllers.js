@@ -20,7 +20,7 @@ export const addEmploye= async (req, res) =>{
     const newEmploye = req.body
     try{
         const employe = await Employe.create(newEmploye)
-        res.status(201).json({message: "Employe ajoute avec succes", employe})
+        res.status(201).json({message: "Employe ajoute avec succes", data: employe})
     }
     catch(error){
         res.status(400).json({message:error.message})
@@ -32,7 +32,7 @@ export const deleteEmploye = async(req, res) => {
     const {id} = req.params
     if (!id) return res.status(404).json({error:true, message: "L'id de l'employe est requis"})
     try {
-        const result = await Employe.destroy({where: {id}})
+        const result = await Employe.destroy({where: {id_employe: id}})
         res.status(200).json({message: `L'employe ${id} a été supprimé avec succes`})
     }
     catch(error){
@@ -45,8 +45,8 @@ export const getEmployeProfile = async (req, res) => {
     const {id} = req.params
 
     try{
-        const Employe = await Employe.findByPk(id)
-        res.status(200).json({message:"Profil d'un Employe", data:Employe})
+        const employe = await Employe.findByPk(id)
+        res.status(200).json({message:"Profil d'un Employe", data:employe})
     }
     catch(error){
         res.status(404).json({message: error.message})
@@ -60,7 +60,7 @@ export const updateEmploye = async (req, res) => {
     
     if (!id) return res.status(404).json({error:true, message: "L'id de l'employe est requis"})
     try {
-        const result = await Employe.update(updatedEmploye, {where : {id}})
+        const result = await Employe.update(updatedEmploye, {where : {id_employe: id}})
         res.status(200).json(result)
     }
     catch(error){

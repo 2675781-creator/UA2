@@ -56,12 +56,12 @@ export const getArticleProfile = async (req, res) => {
 //mise a jour d'un article
 export const updateArticle = async (req, res) => {
     let {id} = req.params
-    const updatedArticle = {titre:req.body.titre, date_publication:req.body.date_publication, status:req.body.status, quantite:req.body.quantite}
+    const updatedArticle = {titre:req.body.titre, date_publication:req.body.date_publication, status:req.body.status, quantite:req.body.quantite, id_auteur: req.body.id_auteur, id_categorie: req.body.id_categorie, id_employe: req.body.id_employe};
     
     if (!id) return res.status(404).json({error:true, message: "L'id de l'article est requis"})
     try {
         const result = await Article.update(updatedArticle, {where : {id_article: id}});
-        res.status(200).json(result)
+        res.status(200).json(result);
     }
     catch(error){
         res.status(404).json({message: error.message})

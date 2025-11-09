@@ -4,7 +4,7 @@ import { addCategorie, deleteCategorie, getAllCategorie, getCategorieProfile, up
 const categorieRoute = Router();
 
 categorieRoute
-.get("", getAllCategorie)
+.get("/", getAllCategorie)
 .get("/:id", getCategorieProfile)
 .post("/", addCategorie)
 .delete("/:id", deleteCategorie)

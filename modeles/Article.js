@@ -7,8 +7,8 @@ const Article = database.define('Article', {
     date_publication: DataTypes.DATEONLY,
     status : {type : DataTypes.STRING, allowNull:false},
     quantite : {type : DataTypes.INTEGER, allowNull: false},
-    numero_auteur : {type: DataTypes.INTEGER, allowNull:false},
-    numero_categorie : {type:DataTypes.INTEGER, allowNull:false},
+    id_auteur : {type: DataTypes.INTEGER, allowNull:false},
+    id_categorie : {type:DataTypes.INTEGER, allowNull:false},
     id_employe : {type: DataTypes.INTEGER, allowNull:false}
 }, {
     timestamps:false

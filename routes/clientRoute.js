@@ -5,7 +5,7 @@ import { addClient, deleteClient, getAllClient, getClientProfile, updateClient }
 const clientRoute = Router()
 
 clientRoute
-.get("", getAllClient)
+.get("/", getAllClient)
 .get("/:id", getClientProfile)
 .post("/", addClient)
 .delete("/:id", deleteClient)

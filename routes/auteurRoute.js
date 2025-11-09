@@ -5,7 +5,7 @@ import { addAuteur, deleteAuteur, getAllAuteur, getAuteurProfile, updateAuteur }
 const auteurRoute = Router();
 
 auteurRoute
-.get("", getAllAuteur)
+.get("/", getAllAuteur)
 .get("/:id", getAuteurProfile)
 .post("/", addAuteur)
 .delete("/:id", deleteAuteur)

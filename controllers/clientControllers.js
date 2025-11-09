@@ -30,7 +30,7 @@ export const deleteClient = async(req, res) => {
     const {id} = req.params
     if (!id) return res.status(404).json({error:true, message: "L'id du Client est requis"})
     try {
-        const result = await Client.destroy({where: {id}})
+        const result = await Client.destroy({where: {id_client: id}})
         res.status(200).json({message: `Le client ${id} a été supprimé avec succes`})
     }
     catch(error){
@@ -58,7 +58,7 @@ export const updateClient = async (req, res) => {
     
     if (!id) return res.status(404).json({error:true, message: "L'id du Client est requis"})
     try {
-        const result = await Client.update(updatedClient, {where : {id}})
+        const result = await Client.update(updatedClient, {where : {id_client: id}})
         res.status(200).json(result)
     }
     catch(error){

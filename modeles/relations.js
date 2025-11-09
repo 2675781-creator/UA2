@@ -15,8 +15,8 @@ Categorie.hasMany(Article, { foreignKey: 'id_categorie'});
 Article.belongsTo(Categorie, {foreignKey: 'id_categorie'});
 
 //Un article peut etre gere par plusieurs employe
-Article.hasMany(Employe, { foreignKey: 'id_article'});
-Employe.belongsTo(Article, { foreignKey: 'id_article'})
+Employe.hasMany(Article, { foreignKey: 'id_article'})
+Article.belongsTo(Employe, { foreignKey: 'id_article'});
 
 //plusieurs articles peuvent etre emprunter par plusieurs clients
 Emprunt.belongsTo(Client, {foreignKey: 'id_client'})
