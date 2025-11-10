@@ -30,11 +30,7 @@ console.log("variables d'environement :", ENV);
 app.get("/", (req, res) => {
     res.send("Bienvenue sur l'API UA2 !");
 });
-//app.get("/api/articles", getAllArticle);
-//app.get("/api/articles/:id", getArticleProfile);
-//app.post("/api/articles", addArticle);
-//app.delete("/api/articles/:id", deleteArticle);
-//app.put("/api/articles/:id", updateArticle);
+
 app.use("/api/articles", articleRoute);
 app.use("/api/categories", categorieRoute);
 app.use("/api/clients", clientRoute);
