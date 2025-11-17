@@ -74,6 +74,7 @@ export const updateEmprunt = async (req, res) => {
     catch(error){
         res.status(404).json({message: error.message})
     }
+<<<<<<< HEAD
     
 
 }
@@ -108,3 +109,7 @@ export const getEmpruntsByArticle = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+=======
+
+}
+>>>>>>> 80cd90aedf20a33d94ae169d9939c22187feaf5b
