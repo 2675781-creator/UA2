@@ -1,7 +1,7 @@
 // controllers/authController.js
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import User from "../modeles/User.js"; // ou Employe, adapte le chemin
+import User from "../modeles/User.js"; 
 
 export const register = async (req, res) => {
   try {
@@ -74,3 +74,19 @@ export const login = async (req, res) => {
     res.status(500).json({ message: "Erreur lors de la connexion" });
   }
 };
+
+export async function getAllUsers(req, res) {
+  try {
+    const users = await User.findAll({
+      attributes: { exclude: ["mot_de_passe"] }, 
+    });
+
+    res.status(200).json({
+      message: "Liste de tous les utilisateurs",
+      data: users,
+    });
+  } catch (error) {
+    console.error("Erreur getAllUsers :", error);
+    res.status(500).json({ message: error.message });
+  }
+}

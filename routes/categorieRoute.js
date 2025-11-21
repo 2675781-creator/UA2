@@ -1,5 +1,5 @@
 import { Router } from "express";
-<<<<<<< HEAD
+import { authorizeRoles } from "../middlewares/roleMiddleware.js";
 import {
   addCategorie,
   deleteCategorie,
@@ -14,25 +14,14 @@ import {
 } from "../validations/categorieValidator.js";
 
 import validate from "../middlewares/validationResult.js";
-=======
-import { addCategorie, deleteCategorie, getAllCategorie, getCategorieProfile, updateCategorie } from "../controllers/categorieControllers.js";
->>>>>>> 80cd90aedf20a33d94ae169d9939c22187feaf5b
 
 const categorieRoute = Router();
 
 categorieRoute
-<<<<<<< HEAD
   .get("/", getAllCategorie)
   .get("/:id_categorie", getCategorieProfile)
   .post("/", createCategorieValidation, validate, addCategorie)
   .put("/:id_categorie", updateCategorieValidation, validate, updateCategorie)
-  .delete("/:id_categorie", deleteCategorie);
-=======
-.get("/", getAllCategorie)
-.get("/:id", getCategorieProfile)
-.post("/", addCategorie)
-.delete("/:id", deleteCategorie)
-.put("/:id", updateCategorie)
->>>>>>> 80cd90aedf20a33d94ae169d9939c22187feaf5b
+  .delete("/:id_categorie", authorizeRoles("admin"), deleteCategorie);
 
 export default categorieRoute;
